@@ -1,0 +1,6 @@
+ systemaddr=0xf7e1cd10
+#systemaddr=0xf7e1dd10
+ binshaddr =0xf7f5b8cf
+#binshaddr =0xf7f5c8cf
+
+

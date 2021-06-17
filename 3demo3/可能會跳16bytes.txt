@@ -1,0 +1,4 @@
+fffdd000-ffffe000 rwxp 00000000 00:00 0                                  [stack] 
+0xffffd3ea 差 16
+0xffffd3da
+
