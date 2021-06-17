@@ -1,0 +1,58 @@
+demo3:
+
+準備工作:
+
+編譯:
+gcc -fno-stack-protector -z execstack -o demo3 demo3.c -no-pie
+
+將 ASLR 關掉:
+在shell中執行：
+sudo -s
+echo 0 > /proc/sys/kernel/randomize_va_space
+exit
+
+server 端:
+ncat -vc ./demo3 -kl 127.0.0.1 8888
+
+入侵端:
+python exploit3.py
+
+demo4:
+
+準備工作:
+把 DEP 打開:
+gcc -fno-stack-protector -o demo4 demo4.c -no-pie
+
+
+server 端:
+ncat -vc ./demo4 -kl 127.0.0.1 8888
+
+入侵端:
+python exploit4.py
+
+demo5:
+
+準備工作:
+打開 ASLR 保護:
+sudo -s
+echo 2 > /proc/sys/kernel/randomize_va_space
+
+server 端:
+ncat -vc ./demo5 -kl 127.0.0.1 8888
+
+入侵端:
+python exploit5.py
+
+
+demo6:
+我的系統今年因安裝套件關係，需用 root 執行，否則某些目錄沒權限
+所以架伺服器跟入侵程式執行都需要 root，否則 dynelf 算出來於libc內的 system or execve 位址會不一樣
+(去年測試時沒這問題，可用使用者權限測試)
+
+
+server 端:
+ncat -vc ./demo6 -kl 127.0.0.1 8888
+
+入侵端:
+python exploit6.py
+
